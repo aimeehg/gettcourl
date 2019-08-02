@@ -1,4 +1,3 @@
-require('dotenv').config();
 const T = require('./config')
   const url = (id, callback) =>{
 
