@@ -1,4 +1,5 @@
 const T = require('./config')
+
   const url = (id, callback) =>{
 
     T.get('statuses/show/:id', { id }, function(err, data, response) {
