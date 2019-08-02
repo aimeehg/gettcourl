@@ -22,7 +22,7 @@ app.get('/geturl', (req, res) => {
 
     url(req.query.id, (error, url) => {
         if (error){
-          return  res.send({ error })
+          return res.send({ error })
         } 
         res.send({url})
     })
