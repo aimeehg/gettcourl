@@ -10,6 +10,7 @@ const T = require('./config')
 
   function onAuthenticated(err, res) {
       if (err) {
+        console.log('hay un error')
           throw err
       }
 
