@@ -1,20 +1,20 @@
 const T = require('./config')
+T.get('account/verify_credentials', { skip_status: true })
+.catch(function (err) {
+  console.log('caught error', err.stack)
+})
+.then(function (result) {
+  // `result` is an Object with keys "data" and "resp".
+  // `data` and `resp` are the same objects as the ones passed
+  // to the callback.
+  // See https://github.com/ttezel/twit#tgetpath-params-callback
+  // for details.
 
+  console.log('data', result.data);
+})
   const url = (id, callback) =>{
 
-    T.get('account/verify_credentials', { skip_status: true })
-  .catch(function (err) {
-    console.log('caught error', err.stack)
-  })
-  .then(function (result) {
-    // `result` is an Object with keys "data" and "resp".
-    // `data` and `resp` are the same objects as the ones passed
-    // to the callback.
-    // See https://github.com/ttezel/twit#tgetpath-params-callback
-    // for details.
 
-    console.log('data', result.data);
-  })
 
     T.get('statuses/show/:id', { id }, function(err, data, response) {
       console.log("entro?3")
