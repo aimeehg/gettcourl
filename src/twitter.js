@@ -13,6 +13,7 @@ oauth.getOAuthRequestToken(function(error, oauth_token, oauth_token_secret, resu
     if(error)
     {
         console.log(error)
+        console.log('entro?!')
         util.puts('error :' + error)
     } 
         else {
