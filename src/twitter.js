@@ -10,10 +10,11 @@ var oauth = new (require('oauth').OAuth)(
 );
 
 oauth.getOAuthRequestToken(function(error, oauth_token, oauth_token_secret, results){
+    console.log("entro?!1")
     if(error)
     {
         console.log(error)
-        console.log('entro?!')
+        console.log('entro?!2')
         util.puts('error :' + error)
     } 
         else {
