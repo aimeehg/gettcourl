@@ -2,6 +2,20 @@ const T = require('./config')
 
   const url = (id, callback) =>{
 
+    T.get('account/verify_credentials', {
+      include_entities: false,
+      skip_status: true,
+      include_email: false
+  }, onAuthenticated)
+
+  function onAuthenticated(err, res) {
+      if (err) {
+          throw err
+      }
+
+      console.log('Authentication successful. Running...\r\n')
+  }
+
     T.get('statuses/show/:id', { id }, function(err, data, response) {
       console.log("entro?3")
       //console.log(response)
