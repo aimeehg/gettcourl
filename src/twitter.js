@@ -10,7 +10,11 @@ var oauth = new (require('oauth').OAuth)(
 );
 
 oauth.getOAuthRequestToken(function(error, oauth_token, oauth_token_secret, results){
-    if(error) util.puts('error :' + error)
+    if(error)
+    {
+        console.log(error)
+        util.puts('error :' + error)
+    } 
         else {
         util.puts('oauth_token :' + oauth_token)
         util.puts('oauth_token_secret :' + oauth_token_secret)
