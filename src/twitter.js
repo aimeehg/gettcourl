@@ -1,5 +1,39 @@
 var util = require('util');
-var oauth = new (require('oauth').OAuth)(
+
+var OAuth2 = OAuth.OAuth2;    
+var twitterConsumerKey = 'bQq9Of8XsIUTqRUkRRsYhSpsz';
+var twitterConsumerSecret = 'f214PfXT8IWmfx1Mm6xHEOzz5eDiiCZ6J26T7Lp44WksXikjkg';
+var oauth2 = new OAuth2(
+  twitterConsumerKey,
+  twitterConsumerSecret, 
+  'https://api.twitter.com/', 
+  null,
+  'oauth2/token', 
+  null);
+oauth2.getOAuthAccessToken(
+  '',
+  {'grant_type':'client_credentials'},
+  function (e, access_token, refresh_token, results){
+    console.log('bearer: ',access_token);
+    oauth2.get('protected url', 
+      access_token, function(e,data,res) {
+        if (e) return callback(e, null);
+        if (res.statusCode!=200) 
+          return callback(new Error(
+            'OAuth2 request failed: '+
+            res.statusCode),null);
+        try {
+          data = JSON.parse(data);   
+          console.log(data)     
+          console.log('se imprimio data')
+        }
+        catch (e){
+          return callback(e, null);
+        }
+        return callback(e, data);
+     });
+  });
+/*var oauth = new (require('oauth').OAuth)(
     'https://api.twitter.com/oauth/request_token',
     'https://api.twitter.com/oauth/access_token',
     'bQq9Of8XsIUTqRUkRRsYhSpsz', // consumer key
@@ -48,3 +82,4 @@ oauth.getOAuthRequestToken(function(error, oauth_token, oauth_token_secret, resu
         });
     }
 });
+*/
